@@ -1,0 +1,41 @@
+services:
+
+  rabbit:
+    image: rabbitmq:4.0.4-management
+    restart: always
+    ports:
+      - "15673:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - "./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+
+  upstream4WoPlugins:
+    image: rabbitmq:4.0.4-management
+    restart: always
+    ports:
+      - "15674:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: guest
+
+  upstream4WithPlugins:
+    image: rabbitmq:4.0.4-management
+    restart: always
+    ports:
+      - "15675:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - "./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+
+  upstream3WoPlugins:
+    image: rabbitmq:3.13-management
+    restart: always
+    ports:
+      - "15676:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: guest
